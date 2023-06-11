@@ -1,9 +1,13 @@
-# Análise de Tendência Central
+# ANÁLISE DESCRITIVA
 
-# Bibliotecas
+# Carregar pacote necessário
 library(ggplot2)
 
-# Data dos primeiros sintomas / Diagnóstico 
+
+# ============================================================================================================
+# PRIMEIRA ANÁLISE
+
+# Média de idades
 mean(INFLUD13$NU_IDADE_N)
 
 # Amostra utilizando idades maiores que 4000 
