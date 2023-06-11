@@ -6,10 +6,10 @@ library(ggplot2)
 # ============================================================================================================
 # PRIMEIRA ANÁLISE
 # Data dos primeiros sintomas / Diagnóstico 
-table(dados$DT_SIN_PRI)
+table(INFLUD13$DT_SIN_PRI)
 
 # Gráfico de Barras
-ggplot(dados, aes(x = DT_SIN_PRI)) +
+ggplot(INFLUD13, aes(x = DT_SIN_PRI)) +
   geom_bar() +
   xlab("Data dos primeiros sintomas / Diagnóstico") +
   ylab("Frequência")
@@ -17,10 +17,10 @@ ggplot(dados, aes(x = DT_SIN_PRI)) +
 # ============================================================================================================
 # SEGUNDA ANÁLISE
 # Gestante
-table(dados$CS_GESTANT)
+table(INFLUD13$CS_GESTANT)
 
 # Gráfico de Barras
-ggplot(dados, aes(x = CS_GESTANT)) +
+ggplot(INFLUD13, aes(x = CS_GESTANT)) +
   geom_bar() +
   xlab("Gestante") +
   ylab("Frequência")
@@ -28,10 +28,10 @@ ggplot(dados, aes(x = CS_GESTANT)) +
 # ============================================================================================================
 # TERCEIRA ANÁLISE
 # Sexo
-table(dados$CS_SEXO)
+table(INFLUD13$CS_SEXO)
 
 # Gráfico de Barras
-ggplot(dados, aes(x = CS_SEXO)) +
+ggplot(INFLUD13, aes(x = CS_SEXO)) +
   geom_bar() +
   xlab("Sexo") +
   ylab("Frequência")
@@ -39,10 +39,10 @@ ggplot(dados, aes(x = CS_SEXO)) +
 # ============================================================================================================
 # QUARTA ANÁLISE
 # Raça/Cor 
-table(dados$CS_RACA)
+table(INFLUD13$CS_RACA)
 
 # Gráfico de Barras
-ggplot(dados, aes(x = CS_RACA)) +
+ggplot(INFLUD13, aes(x = CS_RACA)) +
   geom_bar() +
   xlab("Raça/Cor") +
   ylab("Frequência")
@@ -50,10 +50,10 @@ ggplot(dados, aes(x = CS_RACA)) +
 # ============================================================================================================
 # QUINTA ANÁLISE
 # Recebeu vacina contra gripe 
-table(dados$VACINA)
+table(INFLUD13$VACINA)
 
 # Gráfico de Barras
-ggplot(dados, aes(x = VACINA)) +
+ggplot(INFLUD13, aes(x = VACINA)) +
   geom_bar() +
   xlab("Recebeu vacina contra gripe") +
   ylab("Frequência")
@@ -61,10 +61,10 @@ ggplot(dados, aes(x = VACINA)) +
 # ============================================================================================================
 # SEXTA ANÁLISE
 # Sinais e sintomas - febre 
-table(dados$FEBRE)
+table(INFLUD13$FEBRE)
 
 # Gráfico de Barras
-ggplot(dados, aes(x = FEBRE)) +
+ggplot(INFLUD13, aes(x = FEBRE)) +
   geom_bar() +
   xlab("Sinais e sintomas - febre") +
   ylab("Frequência")
@@ -72,10 +72,10 @@ ggplot(dados, aes(x = FEBRE)) +
 # ============================================================================================================
 # SÉTIMA ANÁLISE
 # Sinais e sintomas - tosse 
-table(dados$TOSSE)
+table(INFLUD13$TOSSE)
 
 # Gráfico de Barras
-ggplot(dados, aes(x = TOSSE)) +
+ggplot(INFLUD13, aes(x = TOSSE)) +
   geom_bar() +
   xlab("Sinais e sintomas - tosse") +
   ylab("Frequência")
@@ -83,10 +83,10 @@ ggplot(dados, aes(x = TOSSE)) +
 # ============================================================================================================
 # OITAVA ANÁLISE
 # Sinais e sintomas - dor de garganta
-table(dados$GARGANTA)
+table(INFLUD13$GARGANTA)
 
 # Gráfico de Barras
-ggplot(dados, aes(x = GARGANTA)) +
+ggplot(INFLUD13, aes(x = GARGANTA)) +
   geom_bar() +
   xlab("Sinais e sintomas - dor de garganta") +
   ylab("Frequência")
