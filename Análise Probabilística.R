@@ -221,7 +221,3 @@ grafico <- ggplot(dados, aes(x = Categoria, y = Probabilidade, fill = Categoria)
 # Exibição do gráfico
 print(grafico)
 
-
-
-
-
