@@ -20,8 +20,7 @@ idade_sem_febre <- amostra_idade[amostra_febre == 2]
 Teste <- t.test(idade_com_febre, idade_sem_febre)
 Teste
 
-
-L# ============================================================================================================
+# ============================================================================================================
 # SEGUNDA HIPÓTESE
 # Hipótese: Existe uma associação entre a presença de febre (FEBRE) e a presença de tosse (TOSSE)?
 # Hipótese nula (H0): Não há associação entre a presença de febre (FEBRE) e a presença de tosse (TOSSE)
@@ -39,7 +38,6 @@ Tabela <- table(amostra_febre, amostra_tosse)
 # Teste qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
-
 
 # ============================================================================================================
 # TERCEIRA HIPÓTESE
@@ -62,7 +60,6 @@ Teste <- aov(amostra_idade ~ amostra_raca)
 # Visualizando Resultado
 summary(Teste)
 
-
 # ============================================================================================================
 # QUARTA HIPÓTESE
 # Hipótese: A proporção de pacientes com tosse (TOSSE) é diferente entre os grupos de gestantes (CS_GESTANT)?
@@ -82,7 +79,6 @@ Tabela <- table(amostra_tosse, amostra_gestante)
 Teste <- chisq.test(Tabela)
 Teste
 
-
 # ============================================================================================================
 # QUINTA HIPÓTESE
 # Hipótese: Existe uma associação entre a presença de dor de garganta (GARGANTA) e a presença de febre (FEBRE)?
@@ -101,7 +97,6 @@ Tabela <- table(amostra_garganta, amostra_febre)
 # Teste qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
-
 
 # ============================================================================================================
 # SEXTA HIPÓTESE
@@ -125,7 +120,6 @@ Tabela <- table(amostra_branca_preta$CS_RACA, amostra_branca_preta$GARGANTA)
 Teste <- chisq.test(Tabela)
 Teste
 
-
 # ============================================================================================================
 # SÉTIMA HIPÓTESE
 # Hipótese: Existe uma relação entre a o Sexo da pessoa e a vacinação contra gripe?
@@ -144,7 +138,6 @@ Tabela <- table(amostra_sexo, amostra_vacina)
 # Teste qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
-
 
 # ============================================================================================================
 # OITAVA HIPÓTESE
