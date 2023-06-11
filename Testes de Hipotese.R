@@ -9,8 +9,8 @@
 # Variaveis: 1. Idade, 2. Sinais e sintomas - Febre
 
 # Filtrar as primeiras 1000 Amostras
-amostra_idade <- head(dados$NU_IDADE_N, 1000)
-amostra_febre <- head(dados$FEBRE, 1000)
+amostra_idade <- head(INFLUD13$NU_IDADE_N, 1000)
+amostra_febre <- head(INFLUD13$FEBRE, 1000)
 
 # Filtrar os pacientes com febre e sem febre
 idade_com_febre <- amostra_idade[amostra_febre == 1]
@@ -20,7 +20,8 @@ idade_sem_febre <- amostra_idade[amostra_febre == 2]
 Teste <- t.test(idade_com_febre, idade_sem_febre)
 Teste
 
-# ============================================================================================================
+
+L# ============================================================================================================
 # SEGUNDA HIPÓTESE
 # Hipótese: Existe uma associação entre a presença de febre (FEBRE) e a presença de tosse (TOSSE)?
 # Hipótese nula (H0): Não há associação entre a presença de febre (FEBRE) e a presença de tosse (TOSSE)
@@ -29,8 +30,8 @@ Teste
 # Variaveis: 1. Sinais e sintomas - Febre, 2. Sinais e sintomas - Tosse
 
 # Filtrar as primeiras 1000 Amostras
-amostra_febre <- head(dados$FEBRE, 1000)
-amostra_tosse <- head(dados$TOSSE, 1000)
+amostra_febre <- head(INFLUD13$FEBRE, 1000)
+amostra_tosse <- head(INFLUD13$TOSSE, 1000)
 
 # Tabela de Contingencia
 Tabela <- table(amostra_febre, amostra_tosse)
@@ -38,6 +39,7 @@ Tabela <- table(amostra_febre, amostra_tosse)
 # Teste qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
+
 
 # ============================================================================================================
 # TERCEIRA HIPÓTESE
@@ -48,8 +50,8 @@ Teste
 # Variaveis: 1. Idade, 2. Sinais e sintomas - Febre
 
 # Filtrar as primeiras 1000 Amostras
-amostra_idade <- head(dados$NU_IDADE_N, 1000)
-amostra_raca <- head(dados$CS_RACA, 1000)
+amostra_idade <- head(INFLUD13$NU_IDADE_N, 1000)
+amostra_raca <- head(INFLUD13$CS_RACA, 1000)
 
 # Converter a variável categórica em um fator
 amostra_raca <- as.factor(amostra_raca)
@@ -60,6 +62,7 @@ Teste <- aov(amostra_idade ~ amostra_raca)
 # Visualizando Resultado
 summary(Teste)
 
+
 # ============================================================================================================
 # QUARTA HIPÓTESE
 # Hipótese: A proporção de pacientes com tosse (TOSSE) é diferente entre os grupos de gestantes (CS_GESTANT)?
@@ -69,8 +72,8 @@ summary(Teste)
 # Variaveis: 1. Sinais e sintomas - Tosse, 2. Gestante
 
 # Filtrar as primeiras 1000 Amostras
-amostra_tosse <- head(dados$TOSSE, 1000)
-amostra_gestante <- head(dados$CS_GESTANT, 1000)
+amostra_tosse <- head(INFLUD13$TOSSE, 1000)
+amostra_gestante <- head(INFLUD13$CS_GESTANT, 1000)
 
 # Tabela de contingência
 Tabela <- table(amostra_tosse, amostra_gestante)
@@ -78,6 +81,7 @@ Tabela <- table(amostra_tosse, amostra_gestante)
 # Teste do qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
+
 
 # ============================================================================================================
 # QUINTA HIPÓTESE
@@ -88,8 +92,8 @@ Teste
 # Variaveis: 1. Sinais e sintomas - Dor de garganta, 2. Sinais e sintomas - Febre
 
 # Filtrar as primeiras 1000 Amostras
-amostra_garganta <- head(dados$GARGANTA, 1000)
-amostra_febre <- head(dados$FEBRE, 1000)
+amostra_garganta <- head(INFLUD13$GARGANTA, 1000)
+amostra_febre <- head(INFLUD13$FEBRE, 1000)
 
 # Tabela de Contingencia
 Tabela <- table(amostra_garganta, amostra_febre)
@@ -97,6 +101,7 @@ Tabela <- table(amostra_garganta, amostra_febre)
 # Teste qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
+
 
 # ============================================================================================================
 # SEXTA HIPÓTESE
@@ -107,11 +112,11 @@ Teste
 # Variaveis: 1. Raça/Cor, 2. Sinais e sintomas - Dor de garganta
 
 # Filtrar as primeiras 1000 Amostras
-amostra_raca <- head(dados$CS_RACA, 1000)
-amostra_garganta <- head(dados$GARGANTA, 1000)
+amostra_raca <- head(INFLUD13$CS_RACA, 1000)
+amostra_garganta <- head(INFLUD13$GARGANTA, 1000)
 
 # Criar Subconjunto de dados apenas para pessoas de raça/cor branca ou preta
-amostra_branca_preta <- subset(dados, CS_RACA %in% c(1, 2))
+amostra_branca_preta <- subset(INFLUD13, CS_RACA %in% c(1, 2))
 
 # Tabela de Contingência
 Tabela <- table(amostra_branca_preta$CS_RACA, amostra_branca_preta$GARGANTA)
@@ -119,6 +124,7 @@ Tabela <- table(amostra_branca_preta$CS_RACA, amostra_branca_preta$GARGANTA)
 # Teste qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
+
 
 # ============================================================================================================
 # SÉTIMA HIPÓTESE
@@ -129,8 +135,8 @@ Teste
 # Variaveis: 1. Sexo, 2. Recebeu vacina contra gripe
 
 # Filtrar as primeiras 1000 Amostras
-amostra_sexo <- head(dados$CS_SEXO, 1000)
-amostra_vacina <- head(dados$VACINA, 1000)
+amostra_sexo <- head(INFLUD13$CS_SEXO, 1000)
+amostra_vacina <- head(INFLUD13$VACINA, 1000)
 
 # Tabela de Contingencia
 Tabela <- table(amostra_sexo, amostra_vacina)
@@ -138,6 +144,7 @@ Tabela <- table(amostra_sexo, amostra_vacina)
 # Teste qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
+
 
 # ============================================================================================================
 # OITAVA HIPÓTESE
@@ -148,8 +155,8 @@ Teste
 # Variaveis: 1. Recebeu vacina contra gripe, 2. Sinais e sintomas - Tosse
 
 # Filtrar as primeiras 1000 Amostras
-amostra_vacina <- head(dados$VACINA, 1000)
-amostra_tosse <- head(dados$TOSSE, 1000)
+amostra_vacina <- head(INFLUD13$VACINA, 1000)
+amostra_tosse <- head(INFLUD13$TOSSE, 1000)
 
 # Tabela de Contingencia
 Tabela <- table(amostra_vacina, amostra_tosse)
@@ -157,4 +164,3 @@ Tabela <- table(amostra_vacina, amostra_tosse)
 # Teste qui-quadrado
 Teste <- chisq.test(Tabela)
 Teste
-
