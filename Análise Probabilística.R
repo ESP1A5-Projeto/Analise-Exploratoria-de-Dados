@@ -1,8 +1,9 @@
-# ==============================================================================
-# Biblioteca necessária
+# ANÁLISES PROBABILÍSTICAS
+
+# Carregar pacote necessário
 library(ggplot2)
 
-# ==============================================================================
+# ============================================================================================================
 # PRIMEIRA ANÁLISE
 # Estimativa de probabilidade de vacinação 
 # Filtrar apenas os casos com valores válidos (1 e 2)
@@ -32,7 +33,7 @@ grafico <- ggplot(probabilidades, aes(x = Categoria, y = Probabilidade)) +
 # Exibir o gráfico
 print(grafico)
 
-# =======================================================================================
+# ============================================================================================================
 # SEGUNDA ANÁLISE
 # Estimativa de probabilidade de vacinação entre pardos e pretos
 # Filtrar apenas os casos com valores válidos (1 e 2) nas variáveis de interesse
@@ -57,7 +58,7 @@ barplot(dados_grafico, main = "Probabilidade de Vacinação em Pessoas Pretas ou
         xlab = "Categoria", ylab = "Probabilidade", ylim = c(0, 1),
         col = cores_grafico, names.arg = nomes_grafico)
 
-# =====================================================================================================
+# ============================================================================================================
 # TERCEIRA ANÁLISE
 # Estimativa de probabilidade de vacinação entre pardos e pretos do sexo feminino
 # Filtrar apenas os casos com valores válidos (1 e 2) nas variáveis de interesse
@@ -88,6 +89,137 @@ ggplot(df, aes(x = CS_RACA, y = Proporcao_Nao_Vacinado, fill = CS_SEXO)) +
   labs(x = "Raça/Cor", y = "Proporção de Não Vacinados", fill = "Sexo") +
   ggtitle("Proporção de Não Vacinados por Raça/Cor e Sexo") +
   theme_minimal()
+
+# ============================================================================================================
+# QUARTA ANÁLISE
+# Estimativa de Probabilidade de Sintomas: Febre, Tosse e Dor de Garganta
+
+# Contagem dos casos de febre
+casos_febre <- sum(INFLUD13$FEBRE == 1, na.rm = TRUE)
+
+# Contagem dos casos de tosse
+casos_tosse <- sum(INFLUD13$TOSSE == 1, na.rm = TRUE)
+
+# Contagem dos casos de dor de garganta
+casos_garganta <- sum(INFLUD13$GARGANTA == 1, na.rm = TRUE)
+
+# Número total de pacientes
+total_pacientes <- nrow(INFLUD13)
+
+# Cálculo das probabilidades
+probabilidade_febre <- casos_febre / total_pacientes
+probabilidade_tosse <- casos_tosse / total_pacientes
+probabilidade_garganta <- casos_garganta / total_pacientes
+
+# Exibindo os resultados
+print(paste("Febre:", format(probabilidade_febre * 100, digits = 4), "%"))
+print(paste("Tosse:", format(probabilidade_tosse * 100, digits = 4), "%"))
+print(paste("Dor de Garganta:", format(probabilidade_garganta * 100, digits = 4), "%"))
+
+# Criação do dataframe com os dados das probabilidades
+dados <- data.frame(
+  Sintoma = c("Febre", "Tosse", "Dor de Garganta"),
+  Probabilidade = c(probabilidade_febre, probabilidade_tosse, probabilidade_garganta) * 100
+)
+
+# Criação do gráfico de barras
+grafico <- ggplot(dados, aes(x = Sintoma, y = Probabilidade)) +
+  geom_bar(stat = "identity", fill = "darkgreen") +
+  labs(title = "Probabilidade de Sintomas", x = "Sintoma", y = "Probabilidade (%)")
+
+# Exibição do gráfico
+print(grafico)
+
+# ============================================================================================================
+# QUINTA ANÁLISE
+# Estimativa de Probabilidade de Vacinação contra a Gripe
+
+# Contagem dos casos de vacinação contra gripe
+casos_vacina <- sum(INFLUD13$VACINA == 1, na.rm = TRUE)
+
+# Número total de pacientes
+total_pacientes <- nrow(INFLUD13)
+
+# Cálculo da probabilidade de vacinação contra gripe
+probabilidade_vacina <- casos_vacina / total_pacientes
+
+# Exibindo o resultado
+print(paste("Vacinação contra Gripe:", format(probabilidade_vacina * 100, digits = 4), "%"))
+
+# Criação do dataframe com os dados da probabilidade de vacinação contra a gripe
+dados <- data.frame(
+  Categoria = c("Vacinação contra Gripe", "Outros"),
+  Probabilidade = c(probabilidade_vacina, 1 - probabilidade_vacina) * 100
+)
+
+# Criação do gráfico de barras
+grafico <- ggplot(dados, aes(x = Categoria, y = Probabilidade, fill = Categoria)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Estimativa de Probabilidade de Vacinação contra a Gripe",
+       x = "Categoria",
+       y = "Probabilidade (%)") +
+  theme_minimal()
+
+# Exibição do gráfico
+print(grafico)
+
+# ============================================================================================================
+# SEXTA ANÁLISE
+# Estimativa de Probabilidade de Categorias de Gestação
+
+# Contagem dos casos de gestação no primeiro trimestre
+casos_trimestre1 <- sum(INFLUD13$CS_GESTANT == 1, na.rm = TRUE)
+
+# Contagem dos casos de gestação no segundo trimestre
+casos_trimestre2 <- sum(INFLUD13$CS_GESTANT == 2, na.rm = TRUE)
+
+# Contagem dos casos de gestação no terceiro trimestre
+casos_trimestre3 <- sum(INFLUD13$CS_GESTANT == 3, na.rm = TRUE)
+
+# Contagem dos casos de gestação com idade gestacional ignorada
+casos_gestacional_ignorado <- sum(INFLUD13$CS_GESTANT == 4, na.rm = TRUE)
+
+# Contagem dos casos sem gestação
+casos_sem_gestacao <- sum(INFLUD13$CS_GESTANT == 5, na.rm = TRUE)
+
+# Contagem dos casos sem aplicação da variável gestação
+casos_sem_aplicacao <- sum(INFLUD13$CS_GESTANT == 6, na.rm = TRUE)
+
+# Número total de pacientes
+total_pacientes <- nrow(INFLUD13)
+
+# Cálculo das probabilidades
+probabilidade_trimestre1 <- casos_trimestre1 / total_pacientes
+probabilidade_trimestre2 <- casos_trimestre2 / total_pacientes
+probabilidade_trimestre3 <- casos_trimestre3 / total_pacientes
+probabilidade_gestacional_ignorado <- casos_gestacional_ignorado / total_pacientes
+probabilidade_sem_gestacao <- casos_sem_gestacao / total_pacientes
+probabilidade_sem_aplicacao <- casos_sem_aplicacao / total_pacientes
+
+# Exibindo os resultados
+print(paste("Gestação no 1º Trimestre:", format(probabilidade_trimestre1 * 100, digits = 4), "%"))
+print(paste("Gestação no 2º Trimestre:", format(probabilidade_trimestre2 * 100, digits = 4), "%"))
+print(paste("Gestação no 3º Trimestre:", format(probabilidade_trimestre3 * 100, digits = 4), "%"))
+print(paste("Gestação com Idade Gestacional Ignorada:", format(probabilidade_gestacional_ignorado * 100, digits = 4), "%"))
+print(paste("Sem Gestação:", format(probabilidade_sem_gestacao * 100, digits = 4), "%"))
+print(paste("Não se Aplica:", format(probabilidade_sem_aplicacao * 100, digits = 4), "%"))
+
+# Criação do dataframe com os dados das probabilidades de gestação
+dados <- data.frame(
+  Categoria = c("1º Trimestre", "2º Trimestre", "3º Trimestre", "Idade Gestacional Ignorada", "Sem Gestação", "Não se Aplica"),
+  Probabilidade = c(probabilidade_trimestre1, probabilidade_trimestre2, probabilidade_trimestre3, probabilidade_gestacional_ignorado, probabilidade_sem_gestacao, probabilidade_sem_aplicacao) * 100
+)
+
+# Criação do gráfico de barras
+grafico <- ggplot(dados, aes(x = Categoria, y = Probabilidade, fill = Categoria)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Estimativa de Probabilidade de Categorias de Gestação",
+       x = "Categoria",
+       y = "Probabilidade (%)") +
+  theme_minimal()
+
+# Exibição do gráfico
+print(grafico)
 
 
 
