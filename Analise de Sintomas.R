@@ -1,9 +1,3 @@
-# CSV Caminho
-Caminho_csv <- "C:/Users/Kariman/Desktop/Projeto Final - Estatistica e Probabilidade/Banco de Dados de Síndrome Respiratória Aguda Grave (2013 - 2018)/INFLUD13.csv"
-
-# Leitura de CSV
-INFLUD13 <- read.csv2(Caminho_csv)
-
 # ============================================================================================================
 # ANÁLISE DE SINTOMAS
 
